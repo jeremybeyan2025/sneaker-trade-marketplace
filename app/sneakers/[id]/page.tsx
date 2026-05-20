@@ -1,7 +1,13 @@
 import { Header } from "@/components/Header";
 import { featuredListings } from "@/lib/data";
-import { ArrowLeft, BadgeCheck, ShieldCheck, Shuffle, Truck } from "lucide-react";
+import { ArrowLeft, BadgeCheck, ShieldCheck, Shuffle, Truck, type LucideIcon } from "lucide-react";
 import { notFound } from "next/navigation";
+
+const trustBadges: { label: string; Icon: LucideIcon }[] = [
+  { label: "Authenticated", Icon: ShieldCheck },
+  { label: "Seller Rated", Icon: BadgeCheck },
+  { label: "Tracked Shipping", Icon: Truck }
+];
 
 export function generateStaticParams() {
   return featuredListings.map((item) => ({ id: item.id }));
@@ -57,15 +63,10 @@ export default async function SneakerDetailPage({ params }: { params: Promise<{ 
             </div>
 
             <div className="grid gap-4 sm:grid-cols-3">
-              {[
-                ["Authenticated", ShieldCheck],
-                ["Seller Rated", BadgeCheck],
-                ["Tracked Shipping", Truck]
-              ].map(([label, Icon]) => (
-                <div key={String(label)} className="card-glass rounded-3xl p-5 text-center">
-                  {/* @ts-expect-error icon */}
+              {trustBadges.map(({ label, Icon }) => (
+                <div key={label} className="card-glass rounded-3xl p-5 text-center">
                   <Icon className="mx-auto mb-3 text-volt" />
-                  <p className="font-black">{String(label)}</p>
+                  <p className="font-black">{label}</p>
                 </div>
               ))}
             </div>
