@@ -1,3 +1,4 @@
+import { sitePath } from "@/lib/site";
 import { ShieldCheck } from "lucide-react";
 
 const navItems = [
@@ -13,7 +14,7 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-white/10 bg-ink/75 backdrop-blur-xl">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
-        <a href="/" className="flex items-center gap-3">
+        <a href={sitePath("/")} className="flex items-center gap-3">
           <div className="grid h-11 w-11 place-items-center rounded-2xl bg-volt font-black text-black shadow-glow">SV</div>
           <div>
             <p className="text-lg font-black leading-none">SoleVault</p>
@@ -23,11 +24,11 @@ export function Header() {
 
         <nav className="hidden items-center gap-6 text-sm font-bold text-white/70 lg:flex">
           {navItems.map(([label, href]) => (
-            <a key={href} href={href} className="transition hover:text-volt">{label}</a>
+            <a key={href} href={sitePath(href)} className="transition hover:text-volt">{label}</a>
           ))}
         </nav>
 
-        <a href="/sell" className="hidden rounded-full bg-white px-4 py-2 text-sm font-black text-black md:inline-flex">
+        <a href={sitePath("/sell")} className="hidden rounded-full bg-white px-4 py-2 text-sm font-black text-black md:inline-flex">
           List a Pair
         </a>
 
