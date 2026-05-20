@@ -1,7 +1,20 @@
 import { Header } from "@/components/Header";
 import { ListingCard } from "@/components/ListingCard";
 import { featuredListings } from "@/lib/data";
-import { ArrowRight, BadgeCheck, Lock, RadioTower, ShieldCheck, Shuffle } from "lucide-react";
+import { ArrowRight, BadgeCheck, Lock, RadioTower, ShieldCheck, Shuffle, type LucideIcon } from "lucide-react";
+
+type FeatureCard = {
+  title: string;
+  Icon: LucideIcon;
+  copy: string;
+};
+
+const featureCards: FeatureCard[] = [
+  { title: "Escrow", Icon: Lock, copy: "Hold funds until authentication passes." },
+  { title: "Authentication", Icon: ShieldCheck, copy: "Admin queue for pass/fail decisions." },
+  { title: "Trade Engine", Icon: Shuffle, copy: "Sneaker-for-sneaker plus cash difference." },
+  { title: "Live Drops", Icon: RadioTower, copy: "TikTok-style product reveals without random paid prizes." }
+];
 
 export default function HomePage() {
   return (
@@ -45,17 +58,11 @@ export default function HomePage() {
 
       <section className="mx-auto max-w-7xl px-5 py-8">
         <div className="grid gap-4 md:grid-cols-4">
-          {[
-            ["Escrow", Lock, "Hold funds until authentication passes."],
-            ["Authentication", ShieldCheck, "Admin queue for pass/fail decisions."],
-            ["Trade Engine", Shuffle, "Sneaker-for-sneaker plus cash difference."],
-            ["Live Drops", RadioTower, "TikTok-style product reveals without random paid prizes."]
-          ].map(([title, Icon, copy]) => (
-            <div key={String(title)} className="card-glass rounded-3xl p-5">
-              {/* @ts-expect-error dynamic icon */}
+          {featureCards.map(({ title, Icon, copy }) => (
+            <div key={title} className="card-glass rounded-3xl p-5">
               <Icon className="mb-5 text-volt" />
-              <h3 className="text-xl font-black">{String(title)}</h3>
-              <p className="mt-2 text-sm leading-6 text-white/55">{String(copy)}</p>
+              <h3 className="text-xl font-black">{title}</h3>
+              <p className="mt-2 text-sm leading-6 text-white/55">{copy}</p>
             </div>
           ))}
         </div>
