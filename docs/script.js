@@ -31,32 +31,37 @@ const initUnveil = () => {
   const pairPrice = document.querySelector('[data-pair-price]');
   const pairHeat = document.querySelector('[data-pair-heat]');
   const pairImage = document.querySelector('[data-pair-image]');
+  const pairDetails = document.querySelector('[data-pair-details]');
 
   if (!stage || !button || !pairName || !pairPrice || !pairHeat || !pairImage) return;
 
   const pairs = [
     {
-      name: 'Jordan 1 Lost & Found',
+      name: 'Redline Retro High-Top',
       price: '$429 Ask',
       heat: 'Heat 96',
+      details: 'Red and white retro high-top visual. Clean studio crop. Demo listing description matches the image shown.',
       image: 'https://images.unsplash.com/photo-1608231387042-66d1773070a5?q=80&w=1600&auto=format&fit=crop'
     },
     {
-      name: 'Nike SB Dunk Jarritos',
+      name: 'Gum-Sole Street Low',
       price: '$690 Ask',
       heat: 'Heat 98',
+      details: 'Neutral lifestyle low-top visual with gum-sole streetwear energy. Demo copy is visual-specific, not fake model-specific.',
       image: 'https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?q=80&w=1600&auto=format&fit=crop'
     },
     {
-      name: 'Jordan 4 Military Black',
+      name: 'White Court Trainer',
       price: '$382 Ask',
       heat: 'Heat 92',
+      details: 'Clean white court-sneaker visual with minimal boutique styling. Great for the seller/authentication flow demo.',
       image: 'https://images.unsplash.com/photo-1552346154-21d32810aba3?q=80&w=1600&auto=format&fit=crop'
     },
     {
-      name: 'Yeezy Boost 350 V2 Zebra',
+      name: 'Red Sprint Runner',
       price: '$315 Ask',
       heat: 'Heat 89',
+      details: 'Bright red athletic low-top visual with strong streetwear color pop. Description now matches the actual image.',
       image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1600&auto=format&fit=crop'
     }
   ];
@@ -67,6 +72,8 @@ const initUnveil = () => {
     pairPrice.textContent = pick.price;
     pairHeat.textContent = pick.heat;
     pairImage.src = pick.image;
+    pairImage.alt = pick.name;
+    if (pairDetails) pairDetails.textContent = pick.details;
     stage.classList.add('open');
   };
 
