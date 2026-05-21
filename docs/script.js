@@ -45,52 +45,52 @@ const initUnveil = () => {
 
   const pairs = [
     {
-      name: 'Redline Retro High-Top',
+      name: 'Red/White High-Top',
       price: '$429 Ask',
       heat: 'Heat 96',
       meta: ['High-top', 'Red / White', 'Trade Ready'],
-      details: 'Custom demo art: red-and-white retro high-top, thick black sneaker-market outline, lime graffiti background, studio-card framing. This visual and description are matched exactly.',
-      image: 'assets/redline-retro.svg'
+      details: 'Photo reveal: red and white high-top sneaker in a clean studio-style crop. Strong hero card for buy-now or trade offer flow.',
+      image: 'https://images.unsplash.com/photo-1608231387042-66d1773070a5?q=80&w=1600&auto=format&fit=crop'
     },
     {
-      name: 'Volt Sprint Runner',
+      name: 'Red Runner',
       price: '$315 Ask',
       heat: 'Heat 89',
-      meta: ['Runner', 'Volt / Cyan', 'Fast Sell'],
-      details: 'Custom demo art: low-profile athletic runner with volt paneling, cyan wall energy, pink hit, and grid texture. The copy describes the image being shown.',
-      image: 'assets/volt-runner.svg'
+      meta: ['Runner', 'Red', 'Fast Sell'],
+      details: 'Photo reveal: bright red athletic sneaker with bold color impact. Strong fit for a fast-moving streetwear listing.',
+      image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=1600&auto=format&fit=crop'
     },
     {
-      name: 'Gum-Sole Street Low',
+      name: 'Neutral Street Low',
       price: '$690 Ask',
       heat: 'Heat 98',
-      meta: ['Low-top', 'Neutral / Gum', 'Collector'],
-      details: 'Custom demo art: neutral lifestyle low-top with gum sole, streetwear poster background, and purple/lime wall movement. The description is image-specific.',
-      image: 'assets/gum-street-low.svg'
+      meta: ['Low-top', 'Neutral', 'Collector'],
+      details: 'Photo reveal: neutral low-top lifestyle sneaker with boutique streetwear styling and premium resale-card presentation.',
+      image: 'https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?q=80&w=1600&auto=format&fit=crop'
     },
     {
-      name: 'White Court Trainer',
+      name: 'White Court Sneaker',
       price: '$382 Ask',
       heat: 'Heat 92',
-      meta: ['Court', 'White / Lime', 'Verified'],
-      details: 'Custom demo art: clean white court trainer, minimal upper, bright lime/cyan court-wall treatment, and crisp black linework.',
-      image: 'assets/white-court.svg'
+      meta: ['Court', 'White', 'Verified'],
+      details: 'Photo reveal: clean white sneaker with a crisp product-shot feel. Simple, broad-market visual for seller onboarding.',
+      image: 'https://images.unsplash.com/photo-1552346154-21d32810aba3?q=80&w=1600&auto=format&fit=crop'
     },
     {
-      name: 'Black-White Daily Low',
+      name: 'Black/White Daily Low',
       price: '$118 Ask',
       heat: 'Heat 74',
       meta: ['Daily Low', 'Black / White', 'Pre-Owned'],
-      details: 'Custom demo art: black-and-white everyday low-top with bold contrast panel and lime graffiti grid. Built as a pre-owned trade candidate.',
-      image: 'assets/black-white-daily.svg'
+      details: 'Photo reveal: black-and-white everyday low-top sneaker, positioned as a lower-priced trade candidate.',
+      image: 'https://images.unsplash.com/photo-1605348532760-6753d2c43329?q=80&w=1600&auto=format&fit=crop'
     },
     {
-      name: 'Mocha Suede Low',
+      name: 'Brown Suede Low',
       price: '$1,230 Ask',
       heat: 'Heat 99',
-      meta: ['Suede Low', 'Mocha / Cream', 'Premium'],
-      details: 'Custom demo art: mocha-toned suede low with cream sole, orange poster-wall field, and lime/cyan accent bursts. Exact image-matched listing copy.',
-      image: 'assets/mocha-suede.svg'
+      meta: ['Suede Low', 'Brown', 'Premium'],
+      details: 'Photo reveal: brown suede-style low-top sneaker with premium collector-card framing and high-value trade positioning.',
+      image: 'https://images.unsplash.com/photo-1556906781-9a412961c28c?q=80&w=1600&auto=format&fit=crop'
     }
   ];
 
@@ -115,11 +115,11 @@ const initUnveil = () => {
     stage.classList.remove('open');
     stage.classList.add('armed');
     button.disabled = true;
-    if (status) status.textContent = 'Locking escrow preview...';
+    if (status) status.textContent = 'Locking photo reveal stage...';
     setCounter('3', '2', '1');
 
     setTimeout(() => {
-      if (status) status.textContent = 'Scanning authenticated demo asset...';
+      if (status) status.textContent = 'Scanning product image...';
       setCounter('2', '1', '0');
     }, 700);
 
@@ -133,15 +133,12 @@ const initUnveil = () => {
       stage.classList.remove('armed');
       stage.classList.add('open');
       button.disabled = false;
-      if (status) status.textContent = 'Confirmed visual reveal complete.';
+      if (status) status.textContent = 'Photo reveal complete.';
     }, 2150);
   };
 
   button.addEventListener('click', revealPair);
-
-  if (reset) {
-    reset.addEventListener('click', revealPair);
-  }
+  if (reset) reset.addEventListener('click', revealPair);
 };
 
 initReveal();
